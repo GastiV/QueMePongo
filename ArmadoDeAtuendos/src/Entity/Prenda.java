@@ -1,5 +1,12 @@
 package Entity;
 
+import Domain.CategoriaPrenda;
+import Domain.MaterialPrenda;
+import Domain.TipoPrenda;
+import Exception.PrendaInvalidaException;
+
+import java.awt.*;
+
 public class Prenda {
     Enum<TipoPrenda> tipoPrenda;
     Enum<CategoriaPrenda> categoriaPrenda;
@@ -7,10 +14,11 @@ public class Prenda {
     Color colorPrincipal; //Clase color que tiene tres atributos R, G y B
     Color colorSecundario; //opcional
 
-    public Prenda(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, MaterialPrenda materialPrenda, Color colorPrincipal, Color colorSecundario) throws Exception {
+    //Puedo agregar la categoria de la prenda dentro del tipo prenda para evitar la validacion
+    Prenda(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, MaterialPrenda materialPrenda, Color colorPrincipal, Color colorSecundario) throws Exception {
 
         if (!this.prendaEsValida(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, String materialPrenda, String colorPrincipal, String colorSecundario)) {
-            throw new Exception("Entity.Prenda inválida");
+            throw new Exception("Prenda inválida");
         }
         this.tipoPrenda = tipoPrenda;
         this.categoriaPrenda = categoriaPrenda;
@@ -19,7 +27,16 @@ public class Prenda {
         this.colorSecundario = colorSecundario;
     }
 
-    private boolean prendaEsValida(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, String materialPrenda, String colorPrincipal, String colorSecundario){
+    private boolean prendaEsValida(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, String materialPrenda, String colorPrincipal, String colorSecundario) throws Exception {
+        if (tipoPrenda == null){
+            throw new PrendaInvalidaException("Falta ingresar Tipo De Prenda");
+        }
+        if (categoriaPrenda == null){
+            throw new PrendaInvalidaException("Falta ingresar Categoria De Prenda");
+        }
+        if (categoriaPrenda == null){
+            throw new PrendaInvalidaException("Falta ingresar Categoria De Prenda");
+        }
         return true;
     }
 
