@@ -8,34 +8,32 @@ import Exception.PrendaInvalidaException;
 import java.awt.*;
 
 public class Prenda {
-    Enum<TipoPrenda> tipoPrenda;
-    Enum<CategoriaPrenda> categoriaPrenda;
+    TipoPrenda tipoPrenda;
     Enum<MaterialPrenda> materialPrenda;
     Color colorPrincipal; //Clase color que tiene tres atributos R, G y B
     Color colorSecundario; //opcional
 
     //Puedo agregar la categoria de la prenda dentro del tipo prenda para evitar la validacion
-    Prenda(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, MaterialPrenda materialPrenda, Color colorPrincipal, Color colorSecundario) throws Exception {
+    Prenda(TipoPrenda tipoPrenda, MaterialPrenda materialPrenda, Color colorPrincipal, Color colorSecundario) throws Exception {
 
-        if (!this.prendaEsValida(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, String materialPrenda, String colorPrincipal, String colorSecundario)) {
+        if (!this.prendaEsValida(tipoPrenda, materialPrenda, colorPrincipal, colorSecundario)) {
             throw new Exception("Prenda inválida");
         }
         this.tipoPrenda = tipoPrenda;
-        this.categoriaPrenda = categoriaPrenda;
         this.materialPrenda = materialPrenda;
         this.colorPrincipal = colorPrincipal;
         this.colorSecundario = colorSecundario;
     }
 
-    private boolean prendaEsValida(TipoPrenda tipoPrenda, CategoriaPrenda categoriaPrenda, String materialPrenda, String colorPrincipal, String colorSecundario) throws Exception {
+    private boolean prendaEsValida(TipoPrenda tipoPrenda, MaterialPrenda materialPrenda, Color colorPrincipal, Color colorSecundario) throws Exception {
         if (tipoPrenda == null){
             throw new PrendaInvalidaException("Falta ingresar Tipo De Prenda");
         }
-        if (categoriaPrenda == null){
-            throw new PrendaInvalidaException("Falta ingresar Categoria De Prenda");
+        if (materialPrenda == null){
+            throw new PrendaInvalidaException("Falta ingresar material de prenda");
         }
-        if (categoriaPrenda == null){
-            throw new PrendaInvalidaException("Falta ingresar Categoria De Prenda");
+        if (colorPrincipal == null){
+            throw new PrendaInvalidaException("Falta ingresar color principal de prenda");
         }
         return true;
     }
