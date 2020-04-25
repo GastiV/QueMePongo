@@ -1,23 +1,23 @@
 package Entity;
 
-import Domain.ColoresPrenda;
-import Domain.MaterialPrenda;
-import Domain.TipoPrenda;
-import Domain.TramaPrenda;
+import Domain.Colores;
+import Domain.Material;
+import Domain.Tipo;
+import Domain.Trama;
 import Exception.PrendaInvalidaException;
 
 public class PrendaBuilder {
 
 
-    TipoPrenda tipoPrenda;
-    MaterialPrenda materialPrenda;
-    ColoresPrenda coloresPrenda;
-    TramaPrenda tramaPrenda;
+    Tipo tipoPrenda;
+    Material materialPrenda;
+    Colores coloresPrenda;
+    Trama tramaPrenda;
 
 
     //Como usuarie de QuéMePongo, quiero crear una prenda especificando primero de qué tipo es.
     //--> Al crear una prenda con el builder si o si especifico el tipo
-    PrendaBuilder(TipoPrenda tipoPrenda){
+    PrendaBuilder(Tipo tipoPrenda){
         this.tipoPrenda = tipoPrenda;
     }
 
@@ -35,9 +35,9 @@ public class PrendaBuilder {
 
 
     //Como usuarie de QuéMePongo, quiero poder no indicar ninguna trama para una tela, y que por defecto ésta sea lisa
-    public TramaPrenda getTramaPrenda() {
+    public Trama getTramaPrenda() {
         if (this.tramaPrenda == null){
-            return TramaPrenda.LISA;
+            return Trama.LISA;
         }else{
             return tramaPrenda;
         }
@@ -46,7 +46,7 @@ public class PrendaBuilder {
     //Como usuarie de QuéMePongo, quiero crear una prenda especificando en segundo lugar los aspectos relacionados a su material
     // (colores, material, trama, etc) para evitar elegir materiales inconsistentes con el tipo de prenda
 
-    public TipoPrenda getTipoPrenda() {
+    public Tipo getTipoPrenda() {
         return tipoPrenda;
     }
 
@@ -58,19 +58,19 @@ public class PrendaBuilder {
         this.tipoPrenda = tipoPrenda;
     }*/
 
-    public MaterialPrenda getMaterialPrenda() {
+    public Material getMaterialPrenda() {
         return materialPrenda;
     }
 
-    public ColoresPrenda getColoresPrenda() {
+    public Colores getColoresPrenda() {
         return coloresPrenda;
     }
 
-    public void setTramaPrenda(TramaPrenda tramaPrenda) throws Exception {
+    public void setTramaPrenda(Trama tramaPrenda) throws Exception {
         this.tramaPrenda = tramaPrenda;
     }
 
-    public void setMaterialPrenda(MaterialPrenda materialPrenda) throws Exception {
+    public void setMaterialPrenda(Material materialPrenda) throws Exception {
         if (this.getTipoPrenda().materialEsConsistente(materialPrenda)){
             this.materialPrenda = materialPrenda;
         }else {
@@ -78,7 +78,7 @@ public class PrendaBuilder {
 
         }
     }
-    public void setColoresPrenda(ColoresPrenda coloresPrenda) throws Exception {
+    public void setColoresPrenda(Colores coloresPrenda) throws Exception {
         this.coloresPrenda = coloresPrenda;
     }
 

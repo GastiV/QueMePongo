@@ -1,5 +1,5 @@
 package Domain;
 
-public enum  TramaPrenda {
+public enum Trama {
     LISA, RAYADA, LUNARES, CUADROS, ESTAMPADO
 }

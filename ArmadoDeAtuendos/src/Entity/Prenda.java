@@ -1,21 +1,21 @@
 package Entity;
 
-import Domain.ColoresPrenda;
-import Domain.MaterialPrenda;
-import Domain.TipoPrenda;
-import Domain.TramaPrenda;
+import Domain.Colores;
+import Domain.Material;
+import Domain.Tipo;
+import Domain.Trama;
 import Exception.PrendaInvalidaException;
 
 public class Prenda {
-    TipoPrenda tipoPrenda;
-    MaterialPrenda materialPrenda;
-    ColoresPrenda coloresPrenda;
+    Tipo tipoPrenda;
+    Material materialPrenda;
+    Colores coloresPrenda;
 
     //Como usuarie de QuéMePongo, quiero especificar qué trama tiene la tela de una prenda (lisa, rayada, con lunares, a cuadros o un estampado).
-    TramaPrenda tramaPrenda;
+    Trama tramaPrenda;
 
     //Puedo agregar la categoria de la prenda dentro del tipo prenda para evitar la validacion
-    Prenda(TipoPrenda tipoPrenda, MaterialPrenda materialPrenda, ColoresPrenda coloresPrenda, TramaPrenda tramaPrenda) throws Exception {
+    Prenda(Tipo tipoPrenda, Material materialPrenda, Colores coloresPrenda, Trama tramaPrenda) throws Exception {
 
         try{
             if (this.prendaEsValida(tipoPrenda, materialPrenda, coloresPrenda, tramaPrenda)) {
@@ -30,7 +30,7 @@ public class Prenda {
         }
     }
 
-    private boolean prendaEsValida(TipoPrenda tipoPrenda, MaterialPrenda materialPrenda, ColoresPrenda coloresPrenda,TramaPrenda tramaPrenda) throws Exception {
+    private boolean prendaEsValida(Tipo tipoPrenda, Material materialPrenda, Colores coloresPrenda, Trama tramaPrenda) throws Exception {
         if (tipoPrenda == null){
             throw new PrendaInvalidaException("Falta ingresar Tipo De Prenda");
         }

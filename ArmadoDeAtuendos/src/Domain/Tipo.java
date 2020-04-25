@@ -1,32 +1,29 @@
 package Domain;
 
-import java.awt.*;
-import java.util.Arrays;
 import java.util.List;
-import Domain.CategoriaPrenda;
 
 //TODO por alguna razón me pedía el ; acá
-public enum TipoPrenda{;
+public enum Tipo {;
 
-    private final java.util.List<MaterialPrenda> materialesAdecuados;
-    CategoriaPrenda categoriaPrenda;
+    private final java.util.List<Material> materialesAdecuados;
+    Categoria categoriaPrenda;
 
-    TipoPrenda(CategoriaPrenda categoriaPrenda, List<MaterialPrenda> materialesAdecuados){
+    Tipo(Categoria categoriaPrenda, List<Material> materialesAdecuados){
         this.materialesAdecuados = materialesAdecuados;
     }
 
-    public boolean admiteMaterial(MaterialPrenda material){
+    public boolean admiteMaterial(Material material){
         return getMaterialesAdecuados().contains(material);
     }
 
-    private List<MaterialPrenda> getMaterialesAdecuados() {
+    private List<Material> getMaterialesAdecuados() {
         return this.materialesAdecuados;
     }
 
-    public CategoriaPrenda categoriaPrenda(){
+    public Categoria categoriaPrenda(){
         return this.categoriaPrenda;
     }
-    public boolean materialEsConsistente(MaterialPrenda materialPrenda){
+    public boolean materialEsConsistente(Material materialPrenda){
         return true;
     }
 

@@ -2,13 +2,13 @@ package Domain;
 
 import java.awt.*;
 
-public class ColoresPrenda {
+public class Colores {
 
     Color colorPrincipal; //Clase color que tiene tres atributos R, G y B
     Color colorSecundario; //opcional
 
 
-    ColoresPrenda(Color colorPrincipal, Color colorSecundario){
+    Colores(Color colorPrincipal, Color colorSecundario){
         this.colorPrincipal = colorPrincipal;
         this.colorSecundario = colorSecundario;
     }

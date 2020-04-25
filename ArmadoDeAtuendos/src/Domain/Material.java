@@ -1,5 +1,5 @@
 package Domain;
 
-public enum MaterialPrenda {
+public enum Material {
     CUERO, ALGODON, CANIAMO
 }
