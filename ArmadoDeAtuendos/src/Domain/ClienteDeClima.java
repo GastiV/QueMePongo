@@ -1,4 +1,5 @@
 package Domain;
 
-public interface ServicioDeClima {
+public interface ClienteDeClima {
+    public Integer obtenerClimaDe(String unaCiudad);
 }
