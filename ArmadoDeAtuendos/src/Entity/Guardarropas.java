@@ -1,25 +1,27 @@
 package Entity;
 
+import Domain.Categoria;
+import Domain.ClienteDeClima;
+
 import java.util.List;
+import java.util.Optional;
 
-public class Armario {
-    List<Prenda> Prendas;
+import static Domain.Categoria.*;
 
-    Armario(List<Prenda> prendas){
-        this.Prendas = prendas;
-    }
-    public List<Prenda> getPrendas() {
-        return Prendas;
-    }
+public class Guardarropas {
+    List<Prenda> prendas;
+    ClienteDeClima servicioDeClima;
 
-    private void agregarElementoALista(List<Prenda> listaDePrendas,Prenda nuevaPrenda){
-        listaDePrendas.add(nuevaPrenda);
+    private Prenda obtenerPrendaAdecuada(Categoria tipoPrenda){
+        return this.prendas.stream().filter(p ->(p.tipoPrenda.equals(tipoPrenda)) && p.esAdecuadaPara(servicioDeClima.obtenerClimaDe("buenosAires")))
+                .findAny().orElseThrow(RuntimeException::new);
     }
-    private void eliminarElementoDeLista(List<Prenda> listaDePrendas,Prenda nuevaPrenda){
-        listaDePrendas.remove(nuevaPrenda);
-    }
-    public void agregarPrenda(Prenda prenda){
-        this.agregarElementoALista(this.getPrendas(), prenda);
+    public Atuendo generarAtuendo(){
+        Integer temperatura = servicioDeClima.obtenerClimaDe("buenosAires");
+        return new Atuendo(this.obtenerPrendaAdecuada(Categoria.PARTE_SUPERIOR),
+                this.obtenerPrendaAdecuada(PARTE_INFERIOR),
+                this.obtenerPrendaAdecuada(CALZADO),
+                this.obtenerPrendaAdecuada(ACCESORIOS));
     }
 
 }

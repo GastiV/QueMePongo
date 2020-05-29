@@ -7,7 +7,6 @@ import Domain.Trama;
 import Exception.PrendaInvalidaException;
 
 public class Prenda {
-    Tipo tipoPrenda;
     Material materialPrenda;
     Colores coloresPrenda;
 
@@ -41,5 +40,15 @@ public class Prenda {
     }
 
 
+    //CUARTA ITERACION
+
+    //Como usuarie de QuéMePongo, quiero que al generar una sugerencia las prendas sean acordes a la temperatura actual sabiendo
+    //que para cada prenda habrá una temperatura
+    //hasta la cual es adecuada. (Ej.: “Remera de mangas largas” no es apta a más de 20°C)
+    Integer temperaturaLimite;
+    Tipo tipoPrenda;
+    public Boolean esAdecuadaPara(Integer unaTemperatura){
+        return unaTemperatura <= temperaturaLimite;
+    }
 
 }
